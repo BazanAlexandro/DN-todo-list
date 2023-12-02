@@ -10,7 +10,8 @@ module.exports = {
         primary: {
           400: '#ed9e6f',
           500: '#ed762f'
-        }
+        },
+        mainBg: 'var(--main-background)'
       }
     },
   },

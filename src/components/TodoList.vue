@@ -1,19 +1,30 @@
 <script setup lang="ts">
 import { Loading3QuartersOutlined, PlusOutlined } from '@ant-design/icons-vue'
+import NewItem from './NetItem.vue'
 import TodoItem from './TodoItem.vue'
 import { useFetchTodos } from '@/utils/queries/useFetchTodos';
+import { ref } from 'vue';
 
+const createMode = ref(false)
 const { data, isLoading } = useFetchTodos()
 </script>
 
 <template>
     <div class="flex flex-col max-w-xl mx-auto py-8 gap-4">
-        <h2 class="font-bold text-3xl">
+        <h2 class="font-bold text-3xl mb-2">
             To Do List
         </h2>
 
-        <div class="flex justify-end">
-            <button class="font-bold text-primary-500 flex gap-2 items-center">
+        <NewItem v-if="createMode" />
+
+        <div
+            v-if="!createMode"
+            class="flex justify-end sticky top-0 bg-mainBg py-4"
+        >
+            <button
+                class="font-bold text-primary-500 flex gap-2 items-center"
+                @click="createMode = true"
+            >
                 Add task
                 <PlusOutlined />
             </button>
