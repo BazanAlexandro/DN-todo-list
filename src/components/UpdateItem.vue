@@ -13,22 +13,20 @@ const emit = defineEmits<{
     cancel: []
 }>()
 
-const { item: itemProp } = props
-const item = ref(itemProp)
-const { todo, completed } = item.value
+const { item } = props
+const todo = ref(item.todo)
 
-const { mutateAsync: updateTodo, isPending: isUpdating } = useUpdateTodo(itemProp.id)
+const { mutateAsync: updateTodo, isPending: isUpdating } = useUpdateTodo(item.id)
 
-watch(itemProp, () => {
-    item.value = itemProp
+watch(item, () => {
+    todo.value = item.todo
 })
 
-const canBeSaved = computed(() => todo.length > 0)
+const canBeSaved = computed(() => todo.value.length > 0)
 
 async function onUpdate() {
     await updateTodo({
-        completed: item.value.completed,
-        todo: item.value.todo
+        todo: todo.value
     })
 
     emit('updated')
