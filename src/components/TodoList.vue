@@ -44,7 +44,6 @@ function onCreated() {
             <TodoItem
                 v-else
                 v-for="item in data"
-                @deleted="() => onDeleted()"
                 :item="item"
                 :key="item.id"
             />

@@ -10,7 +10,6 @@ const props = defineProps<{
 }>()
 
 const { item } = props
-
 const { mutateAsync: deleteTodo, isPending: isDeleting } = useDeleteTodo(item.id)
 
 async function onDelete() {
