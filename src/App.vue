@@ -1,10 +1,10 @@
 <script setup lang="ts">
-  import NoteList from './components/NoteList.vue'
+  import TodoList from './components/TodoList.vue'
 </script>
 
 <template>
   <main>
-    <NoteList />
+    <TodoList />
   </main>
 </template>
 
