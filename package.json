@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@ant-design/icons-vue": "^7.0.1",
+    "@tanstack/vue-query": "^5.12.1",
     "vue": "^3.3.4"
   },
   "devDependencies": {
