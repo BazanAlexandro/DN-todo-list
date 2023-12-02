@@ -1,12 +1,16 @@
 <script setup lang="ts">
 import { Loading3QuartersOutlined, PlusOutlined } from '@ant-design/icons-vue'
-import NewItem from './NetItem.vue'
+import NewItem from './NewItem.vue'
 import TodoItem from './TodoItem.vue'
 import { useFetchTodos } from '@/utils/queries/useFetchTodos';
 import { ref } from 'vue';
 
 const createMode = ref(false)
 const { data, isLoading } = useFetchTodos()
+
+function onCreated() {
+    createMode.value = false
+}
 </script>
 
 <template>
@@ -15,7 +19,7 @@ const { data, isLoading } = useFetchTodos()
             To Do List
         </h2>
 
-        <NewItem v-if="createMode" />
+        <NewItem v-if="createMode" @on-created="onCreated" />
 
         <div
             v-if="!createMode"
@@ -36,7 +40,7 @@ const { data, isLoading } = useFetchTodos()
             </div>
             <TodoItem
                 v-else
-                v-for="item in data?.todos"
+                v-for="item in data"
                 :item="item"
                 :key="item.id"
             />
