@@ -3,6 +3,7 @@ import { Loading3QuartersOutlined, PlusOutlined } from '@ant-design/icons-vue'
 import NewItem from './NewItem.vue'
 import TodoItem from './TodoItem.vue'
 import { useFetchTodos } from '@/utils/queries/useFetchTodos';
+import { createToast } from 'mosha-vue-toastify'
 import { ref } from 'vue';
 
 const createMode = ref(false)
@@ -10,6 +11,12 @@ const { data, isLoading } = useFetchTodos()
 
 function onCreated() {
     createMode.value = false
+
+    createToast('Todo is created', {
+        type: 'info',
+        toastBackgroundColor: '#ed762f',
+        hideProgressBar: true
+    })
 }
 </script>
 
@@ -18,8 +25,6 @@ function onCreated() {
         <h2 class="font-bold text-3xl mb-2">
             To Do List
         </h2>
-
-        <NewItem v-if="createMode" @on-created="onCreated" />
 
         <div
             v-if="!createMode"
@@ -44,6 +49,8 @@ function onCreated() {
                 :item="item"
                 :key="item.id"
             />
+
+            <NewItem v-if="createMode" @on-created="onCreated" />
         </div>
     </div>
 </template>

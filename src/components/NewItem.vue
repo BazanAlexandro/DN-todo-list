@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { CheckCircleFilled, Loading3QuartersOutlined } from '@ant-design/icons-vue';
-import { computed, ref } from 'vue';
+import { computed, onMounted, ref } from 'vue';
 import { useCreate } from '@/utils/queries/todos/useCreate'
 
 const emit = defineEmits<{
@@ -8,9 +8,16 @@ const emit = defineEmits<{
 }>()
 
 const text = ref('')
+const inputRef = ref<HTMLInputElement>()
 const { mutateAsync, isPending: isSubmitting } = useCreate()
 
 const canBeSaved = computed(() => text.value.length > 0)
+
+onMounted(() => {
+    if (inputRef.value) {
+        inputRef.value.focus()
+    }
+})
 
 async function onSubmit() {
     if (!canBeSaved) return
@@ -33,6 +40,7 @@ async function onSubmit() {
             type="text" class="w-full font-medium px-5 py-3 bg-transparent focus-within:outline-none"
             placeholder="New note ..."
             v-model="text"
+            ref="inputRef"
         />
 
         <Loading3QuartersOutlined
