@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import type { TodoItemType } from '@/types/Todo';
 import { EditOutlined, DeleteOutlined } from '@ant-design/icons-vue'
+import type { TodoItemType } from '@/types/Todo'
 
 const buttonClass = 'flex items-center p-2 hover:bg-primary-400 rounded transition'
 
@@ -26,4 +26,4 @@ const { item } = props
             </button>
         </div>
     </div>
-</template>
+</template>@/Todo
