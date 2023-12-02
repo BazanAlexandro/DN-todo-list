@@ -2,7 +2,7 @@ import { type TodoCreationPayloadType, type TodoItemType } from "@/types/Todo"
 import { QUERY_KEYS, apiUrl } from "@/utils/constants"
 import { useMutation, useQueryClient } from "@tanstack/vue-query"
 
-export const useCreate = () => {
+export const useCreateTodo = () => {
     const queryClient = useQueryClient()
 
     return useMutation({

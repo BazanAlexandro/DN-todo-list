@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { CheckCircleFilled, Loading3QuartersOutlined } from '@ant-design/icons-vue';
 import { computed, onMounted, ref } from 'vue';
-import { useCreate } from '@/utils/queries/todos/useCreate'
+import { useCreateTodo } from '@/utils/queries/todos/useCreate'
 
 const emit = defineEmits<{
     onCreated: []
@@ -9,7 +9,7 @@ const emit = defineEmits<{
 
 const text = ref('')
 const inputRef = ref<HTMLInputElement>()
-const { mutateAsync, isPending: isSubmitting } = useCreate()
+const { mutateAsync, isPending: isSubmitting } = useCreateTodo()
 
 const canBeSaved = computed(() => text.value.length > 0)
 

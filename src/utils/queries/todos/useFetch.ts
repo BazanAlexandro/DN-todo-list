@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/vue-query"
-import { QUERY_KEYS, apiUrl } from "../constants"
+import { QUERY_KEYS, apiUrl } from "../../constants"
 import type { TodoItemType } from "@/types/Todo"
 
 export const useFetchTodos = () => {
