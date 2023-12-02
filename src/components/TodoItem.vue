@@ -11,8 +11,7 @@ const props = defineProps<{
     item: TodoItemType
 }>()
 
-const { item } = props
-const { mutateAsync: deleteTodo, isPending: isDeleting } = useDeleteTodo(item.id)
+const { mutateAsync: deleteTodo, isPending: isDeleting } = useDeleteTodo(props.item.id)
 const editMode = ref(false)
 
 async function onDelete() {
