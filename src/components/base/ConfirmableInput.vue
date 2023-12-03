@@ -45,10 +45,19 @@ async function onSubmit() {
         <Loading3QuartersOutlined v-if="isSubmitting"
             class="px-4 flex text-primary-500 items-center justify-center text-lg animate-spin" />
         <div v-else class="flex">
-            <button :disabled="!canBeSaved" :class="btnClass">
+            <button
+                :disabled="!canBeSaved"
+                :class="btnClass"
+                aria-label="Apply Button"
+            >
                 <CheckCircleFilled />
             </button>
-            <button type="button" @click="emit('cancel')" :class="btnClass">
+            <button
+                type="button"
+                @click="emit('cancel')"
+                :class="btnClass"
+                aria-label="Cancel Button"
+            >
                 <CloseCircleFilled />
             </button>
         </div>
