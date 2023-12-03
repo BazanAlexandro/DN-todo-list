@@ -5,9 +5,12 @@ import TodoItem from './TodoItem.vue'
 import { useFetchTodos } from '@/utils/queries/todos/useFetch';
 import { ref } from 'vue';
 import { createToast } from '@/utils/toast';
+import { usePersistState } from '@/utils/persistance'
 
 const createMode = ref(false)
 const { data, isLoading } = useFetchTodos()
+
+usePersistState(data)
 
 function onCreated() {
     createMode.value = false
