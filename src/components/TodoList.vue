@@ -37,32 +37,22 @@ function onFilterChange(f: FilterType) {
             To Do List
         </h2>
 
-        <div
-            v-if="!createMode"
-            class="flex justify-end sticky top-0 bg-mainBg py-4"
-        >
-            <button
-                class="font-bold text-primary-500 flex gap-2 items-center"
-                @click="createMode = true"
-            >
+        <div class="flex flex-col sticky top-0 bg-mainBg py-4 gap-4">
+            <FilterPanel :filter="filter" @change="onFilterChange" />
+
+            <button v-if="!createMode" class="font-bold text-primary-500 flex gap-2 items-center justify-end"
+                @click="createMode = true">
                 Add task
                 <PlusOutlined />
             </button>
         </div>
-
-        <FilterPanel :filter="filter" @change="onFilterChange" />
 
         <div class="flex flex-col gap-2">
             <div v-if="isLoading" class="py-8 flex justify-center">
                 <Loading3QuartersOutlined class="w-9 flex items-center justify-center text-3xl animate-spin" />
             </div>
 
-            <TodoItem
-                v-else
-                v-for="item in filtered"
-                :item="item"
-                :key="item.id"
-            />
+            <TodoItem v-else v-for="item in filtered" :item="item" :key="item.id" />
 
             <NewItem v-if="createMode" @on-created="onCreated" />
         </div>
