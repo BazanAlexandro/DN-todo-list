@@ -7,3 +7,20 @@
 
   font-weight: normal;
 }
+
+/* styling toasts */
+body .mosha__toast {
+  padding: 0.5em 20px;
+}
+
+.mosha__toast .mosha__toast__close-icon {
+  padding-top: 0.5em;
+}
+
+.mosha__toast .mosha__toast__content__text {
+  font-size: 0.9em;
+}
+
+.mosha__toast .mosha__toast__close-icon:hover::before {
+  color: white;
+}
