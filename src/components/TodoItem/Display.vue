@@ -36,11 +36,19 @@ const buttonClass = 'flex items-center justify-center w-8 h-8 hover:bg-primary-4
         :class="item.completed && 'bg-white text-gray-600'"
     >
         <div class="flex items-center gap-4 flex-1">
-            <button @click="toggleCompleted" class="w-4 h-4 rounded-full border border-current shrink-0 hover:scale-125 transition"
-                :class="props.item.completed && 'bg-current'" />
+            <button
+                @click="toggleCompleted"
+                class="w-4 h-4 rounded-full border border-current shrink-0 hover:scale-125 transition"
+                :class="item.completed && 'bg-current'"
+                aria-label="Complete Button"
+            />
 
-            <button @click="toggleCompleted" class="font-bold text-start text-sm flex-1"
-                :class="props.item.completed && 'line-through'">
+            <button
+                @click="toggleCompleted"
+                class="font-bold text-start text-sm flex-1"
+                :class="item.completed && 'line-through'"
+                aria-label="Message"
+            >
                 {{ item.todo }}
             </button>
         </div>
@@ -50,11 +58,19 @@ const buttonClass = 'flex items-center justify-center w-8 h-8 hover:bg-primary-4
                 <Loading3QuartersOutlined class="px-4 flex items-center justify-center text-lg animate-spin" />
             </template>
             <template v-else>
-                <button :class="buttonClass" @click="emit('edit')">
+                <button
+                    :class="buttonClass"
+                    @click="emit('edit')"
+                    aria-label="Edit Button"
+                >
                     <EditOutlined />
                 </button>
 
-                <button @click="onDelete" :class="buttonClass">
+                <button
+                    @click="onDelete"
+                    :class="buttonClass"
+                    aria-label="Delete Button"
+                >
                     <DeleteOutlined />
                 </button>
             </template>

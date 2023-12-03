@@ -32,5 +32,6 @@ async function onUpdate(value: string) {
         :is-submitting="isUpdating"
         @change="onUpdate"
         @cancel="emit('cancel')"
+        aria-label="Edit Mode"
     />
 </template>

@@ -1,5 +1,5 @@
 import type { TodoItemType } from "@/types/Todo"
-import { QUERY_KEYS, apiUrl } from "@/utils/constants"
+import { QUERY_KEYS } from "@/utils/constants"
 import { fetchApi } from "@/utils/fetchApi"
 import { createToast } from "@/utils/toast"
 import { useMutation, useQueryClient } from "@tanstack/vue-query"
