@@ -1,46 +1,38 @@
-# dn-todo-list
+# Todo list
 
-This template should help get you started developing with Vue 3 in Vite.
+Demo:
+https://dn-todo-list.vercel.app/
 
-## Recommended IDE Setup
+Project was created using [create-vue boilerplate package](https://www.npmjs.com/package/create-vue) with Typescript and Tailwind.
+Also, doing query fetching with [@tanstack/vue-query](https://www.npmjs.com/package/@tanstack/vue-query).
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+commands:
 
-## Type Support for `.vue` Imports in TS
+- ```npm run``` - to run project locally
+- ```npm run test:unit``` - run unit tests
+- ```npm run build``` - run build
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
+What was implemented:
+- CRUD for list items
+- Global error handling
+- State persistance with localstorage
+- Filtering by todo message and completed status
 
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
+Any modifications to the state are made to local data. If you want to fetch `fresh` items from api again, type `localStorage.clear()` in the console.
 
-1. Disable the built-in TypeScript Extension
-    1) Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-    2) Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
+Error handling is implemented in `vue-query` plugin configuration, which shows user friendly error message in a toast and logs actual message to the console.
 
-## Customize configuration
+Because [dummy api](https://dummyjson.com/docs/todos) does not save any data on their end, there a couple of bugs you should be aware of.
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+- if you try to update or delete a newly created item, you'll get an error (because a freshly allocated id is not present on the backend's database and any operations with it are invalid)
+- if you try to complete an item after it's text was changed, item's text will be reset (because I'm using backend response in order to update local state, and previous update is not being persisted there). With working backend this bug would not occur.
 
-## Project Setup
+Also, there are 13 tests written for both components and functions.
+I would like to test vue-query functionality as well, but stuck there, because this functionality relies on some provider/inject functionality.
 
-```sh
-npm install
-```
+What I would like to add:
+- Animations
+- Probably debounce on inputs
+- I see api splits todos by user, probably would need to add some kind of user filter or so
 
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
-```
-
-### Type-Check, Compile and Minify for Production
-
-```sh
-npm run build
-```
-
-### Run Unit Tests with [Vitest](https://vitest.dev/)
-
-```sh
-npm run test:unit
-```
+Let me know please what you think of the app.
