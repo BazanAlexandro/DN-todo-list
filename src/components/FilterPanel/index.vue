@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import Search from './Search.vue'
 import type { FilterType } from '@/types/Filter';
 
 const props = defineProps<{
@@ -6,9 +7,9 @@ const props = defineProps<{
     onChange: (filter: FilterType) => void
 }>()
 
-function searchChange(e: Event) {
+function searchChange(val: string) {
     props.onChange({
-        search: (e.target as HTMLInputElement).value
+        search: val
     })
 }
 
@@ -16,7 +17,6 @@ function searchChange(e: Event) {
 
 <template>
     <div class="flex w-full gap-4">
-        <input type="text" class="w-full font-medium px-5 py-3 bg-transparent focus-within:outline-none"
-            placeholder="New note ..." :value="filter.search" @input="searchChange" />
+        <Search :search="filter.search" @change="searchChange" />
     </div>
 </template>
