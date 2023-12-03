@@ -54,7 +54,11 @@ function onFilterChange(f: FilterType) {
 
             <TodoItem v-else v-for="item in filtered" :item="item" :key="item.id" />
 
-            <NewItem v-if="createMode" @on-created="onCreated" />
+            <NewItem
+                v-if="createMode"
+                @on-created="onCreated"
+                @cancel="createMode = false"
+            />
         </div>
     </div>
 </template>
