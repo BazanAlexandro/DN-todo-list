@@ -4,7 +4,6 @@ import type { TodoItemType } from "@/types/Todo"
 export function filterTodos(todos: TodoItemType[] | undefined, filter: FilterType) {
     const { search, completed } = filter
 
-    console.log('completed', completed)
     if (!todos) return
 
     let result = todos

@@ -8,6 +8,6 @@ export type TodoUpdatePayloadType = {
 }
 
 export type TodoItemType = {
-    id: string
+    id: number
     completed: boolean
 } & TodoCreationPayloadType

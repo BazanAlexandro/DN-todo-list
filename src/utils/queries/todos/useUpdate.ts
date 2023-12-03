@@ -1,10 +1,10 @@
 import type { TodoItemType, TodoUpdatePayloadType } from "@/types/Todo"
-import { QUERY_KEYS, apiUrl } from "@/utils/constants"
+import { QUERY_KEYS } from "@/utils/constants"
 import { fetchApi } from "@/utils/fetchApi"
 import { createToast } from "@/utils/toast"
 import { useMutation, useQueryClient } from "@tanstack/vue-query"
 
-export const useUpdateTodo = (id: string) => {
+export const useUpdateTodo = (id: number) => {
     const queryClient = useQueryClient()
 
     return useMutation({

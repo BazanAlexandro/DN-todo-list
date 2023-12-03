@@ -4,7 +4,7 @@ import { fetchApi } from "@/utils/fetchApi"
 import { createToast } from "@/utils/toast"
 import { useMutation, useQueryClient } from "@tanstack/vue-query"
 
-export const useDeleteTodo = (id: string) => {
+export const useDeleteTodo = (id: number) => {
     const queryClient = useQueryClient()
 
     return useMutation({
