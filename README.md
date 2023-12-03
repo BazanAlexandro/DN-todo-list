@@ -8,7 +8,7 @@ Also, doing query fetching with [@tanstack/vue-query](https://www.npmjs.com/pack
 
 commands:
 
-- ```npm run``` - to run project locally
+- ```npm run dev``` - to run project locally
 - ```npm run test:unit``` - run unit tests
 - ```npm run build``` - run build
 
