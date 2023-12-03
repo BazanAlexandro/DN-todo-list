@@ -1,5 +1,6 @@
 import type { TodoItemType } from "@/types/Todo"
 import { QUERY_KEYS, apiUrl } from "@/utils/constants"
+import { fetchApi } from "@/utils/fetchApi"
 import { createToast } from "@/utils/toast"
 import { useMutation, useQueryClient } from "@tanstack/vue-query"
 
@@ -8,7 +9,7 @@ export const useDeleteTodo = (id: string) => {
 
     return useMutation({
         mutationFn: async () => {
-            return await fetch(`${apiUrl}/todos/${id}`, {
+            return await fetchApi(`/todos/${id}`, {
                 method: 'delete'
             })
         },

@@ -1,9 +1,9 @@
 import { createToast as createToastBase } from "mosha-vue-toastify"
 
-export const createToast = (message: string) => {
+export const createToast = (message: string, isError?: boolean) => {
     createToastBase(message, {
         type: 'info',
-        toastBackgroundColor: '#ed762f',
+        toastBackgroundColor: isError ? '#ff3333' : '#ed762f',
         hideProgressBar: true,
     })
 }

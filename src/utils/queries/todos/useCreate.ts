@@ -1,5 +1,6 @@
 import { type TodoCreationPayloadType, type TodoItemType } from "@/types/Todo"
 import { QUERY_KEYS, apiUrl } from "@/utils/constants"
+import { fetchApi } from "@/utils/fetchApi"
 import { useMutation, useQueryClient } from "@tanstack/vue-query"
 
 export const useCreateTodo = () => {
@@ -7,13 +8,12 @@ export const useCreateTodo = () => {
 
     return useMutation({
         mutationFn: async (payload: TodoCreationPayloadType) => {
-            const res = await fetch(`${apiUrl}/todos/add`, {
+            const res = await fetchApi('/todos/add', {
                 method: 'post',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
+                body: {
                     ...payload,
-                    userId: 4 // todo: thing of users
-                })
+                    userId: 4 // todo: think of users
+                }
             })
 
             return res.json()

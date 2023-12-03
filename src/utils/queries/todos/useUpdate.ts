@@ -1,5 +1,6 @@
 import type { TodoItemType, TodoUpdatePayloadType } from "@/types/Todo"
 import { QUERY_KEYS, apiUrl } from "@/utils/constants"
+import { fetchApi } from "@/utils/fetchApi"
 import { createToast } from "@/utils/toast"
 import { useMutation, useQueryClient } from "@tanstack/vue-query"
 
@@ -8,10 +9,9 @@ export const useUpdateTodo = (id: string) => {
 
     return useMutation({
         mutationFn: async (payload: TodoUpdatePayloadType) => {
-            const res = await fetch(`${apiUrl}/todos/${id}`, {
+            const res = await fetchApi(`${apiUrl}/todos/${id}`, {
                 method: 'put',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(payload)
+                body: payload
             })
 
             return await res.json() as unknown as TodoItemType

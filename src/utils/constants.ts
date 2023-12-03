@@ -6,3 +6,5 @@ export const QUERY_KEYS = {
 } as const
 
 export const STATE_PERSISTANCE_KEY = 'dn-todo-state'
+
+export const GENERIC_ERROR_MSG = 'Something is wrong. Please try again'
