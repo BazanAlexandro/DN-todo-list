@@ -39,7 +39,7 @@ const btnClass = 'text-primary-500 w-9 h-8 text-xl flex items-center justify-cen
     <form @submit.prevent="onUpdate"
         class="h-12 flex items-center bg-white rounded-lg focus-within:outline focus-within:outline-primary-500 w-full pr-1">
         <input type="text" class="w-full text-black text-sm font-medium pl-5 py-3 bg-transparent focus-within:outline-none"
-            placeholder="New note ..." v-model="todo" ref="inputRef" />
+            placeholder="Note ..." v-model="todo" ref="inputRef" />
 
         <Loading3QuartersOutlined v-if="isUpdating"
             class="px-4 flex text-primary-500 items-center justify-center text-lg animate-spin" />

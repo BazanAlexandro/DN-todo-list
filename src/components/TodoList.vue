@@ -40,7 +40,7 @@ function onFilterChange(f: FilterType) {
         <div class="flex flex-col sticky top-0 bg-mainBg py-4 gap-4">
             <FilterPanel :filter="filter" @change="onFilterChange" />
 
-            <button v-if="!createMode" class="font-bold text-primary-500 flex gap-2 items-center justify-end"
+            <button :disabled="createMode" class="font-bold text-primary-500 disabled:text-gray-300 disabled:cursor-not-allowed flex gap-2 items-center justify-end"
                 @click="createMode = true">
                 Add task
                 <PlusOutlined />

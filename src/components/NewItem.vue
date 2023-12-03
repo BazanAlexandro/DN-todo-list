@@ -5,6 +5,7 @@ import { useCreateTodo } from '@/utils/queries/todos/useCreate'
 
 const emit = defineEmits<{
     onCreated: []
+    cancel: []
 }>()
 
 const text = ref('')
@@ -34,11 +35,11 @@ async function onSubmit() {
 <template>
     <form
         @submit.prevent="onSubmit"
-        class="flex items-center gap-4 bg-white rounded-lg focus-within:outline focus-within:outline-primary-500"
+        class="flex items-center gap-4 bg-white rounded-lg focus-within:outline focus-within:outline-primary-500 h-12"
     >
         <input
-            type="text" class="w-full text-sm font-medium px-5 py-3 bg-transparent focus-within:outline-none"
-            placeholder="New note ..."
+            type="text" class="w-full text-sm font-medium px-5 h-full bg-transparent focus-within:outline-none"
+            placeholder="Note ..."
             v-model="text"
             ref="inputRef"
         />

@@ -20,24 +20,28 @@ async function onDelete() {
 }
 
 async function toggleCompleted() {
+    if (isDeleting.value || isUpdating.value) return
+
     await updateTodo({
         completed: !props.item.completed
     })
 }
 
-const buttonClass = 'flex items-center justify-center w-8 h-8 h-full hover:bg-primary-400 rounded transition'
+const buttonClass = 'flex items-center justify-center w-8 h-8 hover:bg-primary-400 rounded transition'
 </script>
 
 <template>
-    <div class="pl-5 pr-2 min-h-[48px] py-1 flex items-center gap-4 w-full">
-        <button @click="toggleCompleted" class="w-4 h-4 rounded-full border border-white shrink-0"
-            :class="props.item.completed && 'bg-white'" />
-        <button @click="toggleCompleted" class="font-bold text-start text-sm"
-            :class="props.item.completed && 'line-through'">
-            {{ item.todo }}
-        </button>
+    <div class="pl-5 pr-2 min-h-[48px] py-1 flex gap-4 w-full">
+        <div class="flex items-center gap-4 flex-1">
+            <button @click="toggleCompleted" class="w-4 h-4 rounded-full border border-white shrink-0"
+                :class="props.item.completed && 'bg-white'" />
+            <button @click="toggleCompleted" class="font-bold text-start text-sm flex-1"
+                :class="props.item.completed && 'line-through'">
+                {{ item.todo }}
+            </button>
+        </div>
 
-        <div class="flex gap-1 items-center ml-auto h-full">
+        <div class="flex gap-1 items-center ml-auto h-inherit">
             <template v-if="isDeleting || isUpdating">
                 <Loading3QuartersOutlined class="px-4 flex text-white items-center justify-center text-lg animate-spin" />
             </template>
