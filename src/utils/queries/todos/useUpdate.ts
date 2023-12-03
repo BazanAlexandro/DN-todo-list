@@ -9,7 +9,7 @@ export const useUpdateTodo = (id: string) => {
 
     return useMutation({
         mutationFn: async (payload: TodoUpdatePayloadType) => {
-            const res = await fetchApi(`${apiUrl}/todos/${id}`, {
+            const res = await fetchApi(`/todos/${id}`, {
                 method: 'put',
                 body: payload
             })

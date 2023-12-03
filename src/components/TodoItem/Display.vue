@@ -31,10 +31,14 @@ const buttonClass = 'flex items-center justify-center w-8 h-8 hover:bg-primary-4
 </script>
 
 <template>
-    <div class="pl-5 pr-2 min-h-[48px] py-1 flex gap-4 w-full">
+    <div
+        class="pl-5 pr-2 min-h-[48px] py-1 flex gap-4 w-full bg-primary-500 transition"
+        :class="item.completed && 'bg-white text-gray-600'"
+    >
         <div class="flex items-center gap-4 flex-1">
-            <button @click="toggleCompleted" class="w-4 h-4 rounded-full border border-white shrink-0"
-                :class="props.item.completed && 'bg-white'" />
+            <button @click="toggleCompleted" class="w-4 h-4 rounded-full border border-current shrink-0 hover:scale-125 transition"
+                :class="props.item.completed && 'bg-current'" />
+
             <button @click="toggleCompleted" class="font-bold text-start text-sm flex-1"
                 :class="props.item.completed && 'line-through'">
                 {{ item.todo }}
@@ -43,7 +47,7 @@ const buttonClass = 'flex items-center justify-center w-8 h-8 hover:bg-primary-4
 
         <div class="flex gap-1 items-center ml-auto h-inherit">
             <template v-if="isDeleting || isUpdating">
-                <Loading3QuartersOutlined class="px-4 flex text-white items-center justify-center text-lg animate-spin" />
+                <Loading3QuartersOutlined class="px-4 flex items-center justify-center text-lg animate-spin" />
             </template>
             <template v-else>
                 <button :class="buttonClass" @click="emit('edit')">

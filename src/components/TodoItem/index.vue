@@ -13,7 +13,7 @@ const editMode = ref(false)
 </script>
 
 <template>
-    <div class="flex bg-primary-500 text-white rounded-lg flex items-center gap-4">
+    <div class="flex text-white rounded-lg overflow-hidden flex items-center gap-4">
         <Update
             v-if="editMode"
             :item="props.item"
