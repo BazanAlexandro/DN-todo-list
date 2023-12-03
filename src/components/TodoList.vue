@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { Loading3QuartersOutlined, PlusOutlined } from '@ant-design/icons-vue'
 import NewItem from './NewItem.vue'
-import TodoItem from './TodoItem.vue'
+import TodoItem from './TodoItem/index.vue'
 import FilterPanel from './FilterPanel/index.vue'
 import { useFetchTodos } from '@/utils/queries/todos/useFetch';
 import { computed, ref } from 'vue';

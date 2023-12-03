@@ -37,7 +37,7 @@ async function onSubmit() {
         class="flex items-center gap-4 bg-white rounded-lg focus-within:outline focus-within:outline-primary-500"
     >
         <input
-            type="text" class="w-full font-medium px-5 py-3 bg-transparent focus-within:outline-none"
+            type="text" class="w-full text-sm font-medium px-5 py-3 bg-transparent focus-within:outline-none"
             placeholder="New note ..."
             v-model="text"
             ref="inputRef"
