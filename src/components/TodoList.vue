@@ -2,20 +2,31 @@
 import { Loading3QuartersOutlined, PlusOutlined } from '@ant-design/icons-vue'
 import NewItem from './NewItem.vue'
 import TodoItem from './TodoItem.vue'
+import FilterPanel from './FilterPanel/index.vue'
 import { useFetchTodos } from '@/utils/queries/todos/useFetch';
-import { ref } from 'vue';
+import { computed, ref } from 'vue';
 import { createToast } from '@/utils/toast';
 import { usePersistState } from '@/utils/persistance'
+import type { FilterType } from '@/types/Filter';
+import { filterTodos } from '@/utils/filter'
 
 const createMode = ref(false)
+
+const filter = ref<FilterType>({})
 const { data, isLoading } = useFetchTodos()
 
 usePersistState(data)
+
+const filtered = computed(() => filterTodos(data.value, filter.value))
 
 function onCreated() {
     createMode.value = false
 
     createToast('Todo is created')
+}
+
+function onFilterChange(f: FilterType) {
+    filter.value = f
 }
 
 </script>
@@ -39,6 +50,8 @@ function onCreated() {
             </button>
         </div>
 
+        <FilterPanel :filter="filter" @change="onFilterChange" />
+
         <div class="flex flex-col gap-2">
             <div v-if="isLoading" class="py-8 flex justify-center">
                 <Loading3QuartersOutlined class="w-9 flex items-center justify-center text-3xl animate-spin" />
@@ -46,7 +59,7 @@ function onCreated() {
 
             <TodoItem
                 v-else
-                v-for="item in data"
+                v-for="item in filtered"
                 :item="item"
                 :key="item.id"
             />
